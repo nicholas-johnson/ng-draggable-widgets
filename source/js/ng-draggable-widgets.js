@@ -17,12 +17,14 @@
 
     var setPosition = function(e) {
       el.css({
-        left: e.pageX - scope.drag.offsetX - 20,
-        top: e.pageY - scope.drag.offsetY - 20
+        left: e.pageX - scope.drag.offsetX - 20 + 'px',
+        top: e.pageY - scope.drag.offsetY - 20 + 'px'
       });
+      console.log('mousemove');
     };
 
     scope.drag.initDrag = function(e) {
+      console.log('start drag');
       scope.drag.offsetX = e.offsetX;
       scope.drag.offsetY = e.offsetY;
       setPosition(e);
@@ -37,7 +39,7 @@
     scope.drag.destroyDrag = function() {
       console.log('stop drag');
       el.removeClass('dragging');
-      $(window).off('mousemove');
+      $window.off('mousemove');
       el.css({
         position:'',
         left: '',
@@ -47,13 +49,30 @@
     };
   };
 
+  var dragHandleLink = function(scope, el, attrs) {
+    el.on('mousedown', function(e) {
+      scope.drag.initDrag(e);
+    });
+    el.on('mouseup', function(e) {
+      scope.drag.destroyDrag(e);
+    });
+  };
+
   angular.module('ng-draggable-widgets', [])
-    .directive('draggable', function() {
+    .directive('draggableWidget', function() {
       return {
         scope:true,
         restrict: 'A',
         controller: dragController,
-        link: dragLink
+        link: {pre: dragLink}
+      };
+    })
+
+    .directive('draggableWidgetHandle', function() {
+      return {
+        scope:true,
+        restrict: 'A',
+        link: {pre: dragHandleLink}
       };
     });
 })();

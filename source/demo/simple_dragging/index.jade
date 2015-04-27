@@ -7,6 +7,7 @@ html( ng-app='app' )
     script( src='./demo.js' )
     link( rel="stylesheet" type='text/css' href='./demo.css' )
   body( ng-controller='dragController' )
-    div( ng-repeat='widget in widgets' draggable-widget )
-      div( drag-handle ) drag
+    div( ng-repeat='widget in widgets' draggable-widget class='{{widget.class}}' )
+      div( draggable-widget-handle ) drag
       {{widget.title}}
+      pre {{widget.drag | json}}

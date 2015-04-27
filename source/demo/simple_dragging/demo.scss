@@ -1,25 +1,47 @@
+$width: 200px;
+$margin: 10px;
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family:sans-serif;
+  color:#fff;
+  font-size: 100%;
+  width:4*$width + 6*$margin;
+  margin:0 auto;
+}
+
 div[draggable-widget] {
-  width:200px;
+  width:$width;
   height:200px;
   border-radius:5px;
   padding:10px;
   float:left;
-  margin:10px;
-  &:nth-child(1) {
+  margin:$margin;
+  &.woks {
     background:aqua;
   }
-  &:nth-child(2) {
+  &.mocks {
     background:cadetblue;
   }
-  &:nth-child(3) {
+  &.socks {
     background:red;
+    width:2 * $width + $margin;
   }
-  &:nth-child(4) {
+  &.pops {
     background:darkseagreen;
   }
+  &.hocks {
+    background:darkred;
+  }
 }
-div[drag-handle] {
-  border:1px solid black;
+div[draggable-widget-handle] {
+  border:3px solid rgba(255,255,255,1);
   padding:10px;
   background:rgba(0,0,0,0.3);
   border-radius:3px;

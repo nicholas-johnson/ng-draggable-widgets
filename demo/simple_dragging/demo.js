@@ -2,16 +2,24 @@
 
   var widgets = [
     {
-      title:'Cats with Woks'
+      title:'Cats with Woks',
+      class: 'woks'
     },
     {
-      title:'Mocks of Macs'
+      title:'Socks on Sticks',
+      class: 'socks'
     },
     {
-      title:'Socks on Sticks'
+      title:'Mocks of Macs',
+      class: 'mocks'
     },
     {
-      title:'Pops in Pumps'
+      title:'Pops in Pumps',
+      class: 'pops'
+    },
+    {
+      title:'Hocks of Rumps',
+      class: 'hocks'
     }
   ];
 
