@@ -1,0 +1,12 @@
+doctype html
+html( ng-app='app' )
+  head
+    title Widget dragging demo
+    script( src='../../public/components/angular/angular.js' )
+    script( src='../../build/js/ng-draggable-widgets.js' )
+    script( src='./demo.js' )
+    link( rel="stylesheet" type='text/css' href='./demo.css' )
+  body( ng-controller='dragController' )
+    div( ng-repeat='widget in widgets' draggable-widget )
+      div( drag-handle ) drag
+      {{widget.title}}
