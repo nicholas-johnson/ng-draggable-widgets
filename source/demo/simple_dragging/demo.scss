@@ -1,4 +1,5 @@
 $width: 200px;
+$height: 200px;
 $margin: 10px;
 
 html {
@@ -18,7 +19,7 @@ body {
 
 div[draggable-widget] {
   width:$width;
-  height:200px;
+  height:$height;
   border-radius:5px;
   padding:10px;
   float:left;
@@ -39,6 +40,11 @@ div[draggable-widget] {
   &.hocks {
     background:darkred;
   }
+}
+div.widget-placeholder {
+  border:1px solid red;
+  float:left;
+  height:$height;
 }
 div[draggable-widget-handle] {
   border:3px solid rgba(255,255,255,1);

@@ -12,6 +12,7 @@ var gulp = require('gulp'),
   jade = require('gulp-jade'),
   minifycss = require('gulp-minify-css'),
   autoprefixer = require('gulp-autoprefixer'),
+  plumber = require('gulp-plumber');
   karma = require('karma').server,
   package = require('./package.json');
 
@@ -40,6 +41,7 @@ gulp.task('js', function () {
     .on('error', beep)
     .pipe(concat(package.name + '.js'))
     .pipe(ngAnnotate())
+    .on('error', gutil.noop)
     .pipe(header(jsHeader + '\n\n'))
     .pipe(gulp.dest(dirs.js.dest))
     .pipe(rename(package.name + '.min.js'))
