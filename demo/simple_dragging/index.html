@@ -8,9 +8,11 @@
     <link rel="stylesheet" type="text/css" href="./demo.css">
   </head>
   <body ng-controller="dragController">
-    <div ng-repeat="widget in widgets" draggable-widget class="{{widget.class}}">
-      <div draggable-widget-handle>drag</div>{{widget.title}}
-      <pre>{{widget.drag | json}}</pre>
+    <div drag-group="widgets">
+      <div ng-repeat="widget in widgets" draggable-widget="widget" draggable-widget-callback="moveWidget" class="{{widget.class}}">
+        <div draggable-widget-handle>drag</div>
+        <p>{{widget.title}}</p>
+      </div>
     </div>
   </body>
 </html>

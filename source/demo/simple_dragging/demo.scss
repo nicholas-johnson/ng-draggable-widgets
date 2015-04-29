@@ -1,5 +1,5 @@
 $width: 200px;
-$height: 200px;
+$height: 300px;
 $margin: 10px;
 
 html {
@@ -13,7 +13,7 @@ body {
   font-family:sans-serif;
   color:#fff;
   font-size: 100%;
-  width:4*$width + 6*$margin;
+  width:4*$width + 10*$margin;
   margin:0 auto;
 }
 
@@ -45,6 +45,7 @@ div.widget-placeholder {
   border:1px solid red;
   float:left;
   height:$height;
+  margin:$margin;
 }
 div[draggable-widget-handle] {
   border:3px solid rgba(255,255,255,1);

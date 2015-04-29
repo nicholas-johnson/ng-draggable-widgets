@@ -8,12 +8,12 @@ body {
   font-family: sans-serif;
   color: #fff;
   font-size: 100%;
-  width: 860px;
+  width: 900px;
   margin: 0 auto; }
 
 div[draggable-widget] {
   width: 200px;
-  height: 200px;
+  height: 300px;
   border-radius: 5px;
   padding: 10px;
   float: left;
@@ -33,7 +33,8 @@ div[draggable-widget] {
 div.widget-placeholder {
   border: 1px solid red;
   float: left;
-  height: 200px; }
+  height: 300px;
+  margin: 10px; }
 
 div[draggable-widget-handle] {
   border: 3px solid white;

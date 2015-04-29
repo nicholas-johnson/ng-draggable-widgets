@@ -26,5 +26,8 @@
   angular.module('app', ['ng-draggable-widgets'])
     .controller('dragController', function($scope) {
       $scope.widgets = widgets;
+      $scope.moveWidget = function(drag) {
+        console.log(drag);
+      }
     });
 })();
