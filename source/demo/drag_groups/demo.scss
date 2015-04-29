@@ -1,5 +1,5 @@
-$width: 200px;
-$height: 300px;
+$width: 100px;
+$height: 200px;
 $margin: 10px;
 
 html {
@@ -10,11 +10,24 @@ html {
 }
 
 body {
+  width: $width * 8;
+  margin:0 auto;
   font-family:sans-serif;
   color:#fff;
   font-size: 100%;
-  width:4*$width + 10*$margin;
-  margin:0 auto;
+}
+
+.group-one, .group-two {
+  width:3*$width + 6*$margin;
+  background:grey;
+  margin:$margin;
+}
+.group-one {
+  float:left;
+}
+
+.group-two {
+  float:right;
 }
 
 div[draggable-widget] {

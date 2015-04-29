@@ -1,0 +1,18 @@
+doctype html
+html( ng-app='app' )
+  head
+    title Widget dragging demo
+    script( src='../../public/components/angular/angular.js' )
+    script( src='../../build/js/ng-draggable-widgets.js' )
+    script( src='./demo.js' )
+    link( rel="stylesheet" type='text/css' href='./demo.css' )
+  body( ng-controller='dragController' )
+    div.group-one( drag-group='widgetGroups[0]' )
+      div( ng-repeat='widget in widgetGroups[0]' draggable-widget='widget' draggable-widget-callback='moveWidget' class='{{widget.class}}' )
+        div( draggable-widget-handle ) drag
+        p {{widget.title}}
+
+    div.group-two( drag-group='widgetGroups[1]' )
+      div( ng-repeat='widget in widgetGroups[1]' draggable-widget='widget' draggable-widget-callback='moveWidget' class='{{widget.class}}' )
+        div( draggable-widget-handle ) drag
+        p {{widget.title}}

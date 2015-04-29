@@ -5,15 +5,26 @@ html {
   box-sizing: inherit; }
 
 body {
+  width: 800px;
+  margin: 0 auto;
   font-family: sans-serif;
   color: #fff;
-  font-size: 100%;
-  width: 900px;
-  margin: 0 auto; }
+  font-size: 100%; }
+
+.group-one, .group-two {
+  width: 360px;
+  background: grey;
+  margin: 10px; }
+
+.group-one {
+  float: left; }
+
+.group-two {
+  float: right; }
 
 div[draggable-widget] {
-  width: 200px;
-  height: 300px;
+  width: 100px;
+  height: 200px;
   border-radius: 5px;
   padding: 10px;
   float: left;
@@ -24,7 +35,7 @@ div[draggable-widget] {
     background: cadetblue; }
   div[draggable-widget].socks {
     background: red;
-    width: 420px; }
+    width: 220px; }
   div[draggable-widget].pops {
     background: darkseagreen; }
   div[draggable-widget].hocks {
@@ -33,7 +44,7 @@ div[draggable-widget] {
 div.widget-placeholder {
   border: 1px solid red;
   float: left;
-  height: 300px;
+  height: 200px;
   margin: 10px; }
 
 div[draggable-widget-handle] {

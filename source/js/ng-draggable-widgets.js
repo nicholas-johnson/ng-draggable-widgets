@@ -5,39 +5,42 @@
     '</div>'
   ].join(''));
 
-  // Hitzones are positioned to the left and right of widgets
-  // We call check to see if the current drag location is next to a widget
-  // If so we move the placeholder.
+  // Hitzones are positioned on the left and right of widgets
+  // We call check to see if the current drag location is in a hitzone
+  // If so we move the placeholder and update the drag destination.
   var hitZones = {
     size: 10,
     check: function(e) {
       var i, groups, widgets, widget, rect;
-      widgets = document.querySelectorAll('[draggable-widget]:not(.dragging)');
-      for (i = 0; i < widgets.length; i++) {
-        widget = widgets[i];
-        rect = widget.getBoundingClientRect();
-        width = widget.offsetWidth;
-        if ((e.pageY > rect.top) &&
-            (e.pageY < rect.bottom) &&
-            (e.pageX > rect.left) &&
-            (e.pageX < rect.right - (width / 2))) {
-          placeholder.insertBefore(widget);
-          console.log(i);
-          return {
-            group: angular.element(widget).scope().dragGroup,
-            index: i
-          };
-        }
-        if ((e.pageY > rect.top) &&
-            (e.pageY < rect.bottom) &&
-            (e.pageX > rect.left + (width / 2)) &&
-            (e.pageX < rect.right)) {
-          placeholder.insertAfter(widget);
-          console.log(i+1);
-          return {
-            group: angular.element(widget).scope().dragGroup,
-            index: i+1
-          };
+      groups = document.querySelectorAll('[drag-group]');
+      for (j = 0; j < groups.length; j++) {
+        widgets = groups[j].querySelectorAll('[draggable-widget]:not(.dragging)');
+        for (i = 0; i < widgets.length; i++) {
+          widget = widgets[i];
+          rect = widget.getBoundingClientRect();
+          width = widget.offsetWidth;
+          if ((e.pageY > rect.top) &&
+              (e.pageY < rect.bottom) &&
+              (e.pageX > rect.left) &&
+              (e.pageX < rect.right - (width / 2))) {
+            placeholder.insertBefore(widget);
+            console.log(i);
+            return {
+              group: angular.element(widget).scope().dragGroup,
+              index: i
+            };
+          }
+          if ((e.pageY > rect.top) &&
+              (e.pageY < rect.bottom) &&
+              (e.pageX > rect.left + (width / 2)) &&
+              (e.pageX < rect.right)) {
+            placeholder.insertAfter(widget);
+            console.log(i+1);
+            return {
+              group: angular.element(widget).scope().dragGroup,
+              index: i+1
+            };
+          }
         }
       }
     }
@@ -59,7 +62,7 @@
       $placeholder[0].hidden = true;
     },
     insertBefore: function(el) {
-      el.parentElement.insertBefore($placeholder[0], el)
+      el.parentElement.insertBefore($placeholder[0], el);
     },
     insertAfter: function(el) {
       angular.element(el).after($placeholder);
