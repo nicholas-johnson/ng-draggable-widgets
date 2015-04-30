@@ -1,36 +1,20 @@
-$width: 100px;
-$height: 200px;
+$width: 200px;
+$height: 300px;
 $margin: 10px;
 
 html {
   box-sizing: border-box;
 }
-
 *, *:before, *:after {
   box-sizing: inherit;
 }
 
 body {
-  width: $width * 8;
-  margin:0 auto;
   font-family:sans-serif;
   color:#fff;
   font-size: 100%;
-}
-
-.group-one, .group-two {
-  width:3*$width + 8*$margin;
-  background:grey;
-  margin:$margin;
-  padding:$margin;
-}
-
-.group-one {
-  float:left;
-}
-
-.group-two {
-  float:right;
+  width:4*$width + 10*$margin;
+  margin:0 auto;
 }
 
 div[draggable-widget] {

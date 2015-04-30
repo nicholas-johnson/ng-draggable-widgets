@@ -1,45 +1,28 @@
-$width: 100px;
-$height: 200px;
+$width: 200px;
+$height: 300px;
 $margin: 10px;
 
 html {
   box-sizing: border-box;
 }
-
 *, *:before, *:after {
   box-sizing: inherit;
 }
 
 body {
-  width: $width * 8;
-  margin:0 auto;
   font-family:sans-serif;
   color:#fff;
   font-size: 100%;
-}
-
-.group-one, .group-two {
-  width:3*$width + 8*$margin;
-  background:grey;
-  margin:$margin;
-  padding:$margin;
-}
-
-.group-one {
-  float:left;
-}
-
-.group-two {
-  float:right;
+  width:4*$width + 10*$margin;
+  margin:0 auto;
 }
 
 div[draggable-widget] {
-  width:$width;
+  width:33.333%;
   height:$height;
   border-radius:5px;
   padding:10px;
   float:left;
-  margin:$margin;
   &.woks {
     background:aqua;
   }
@@ -48,7 +31,7 @@ div[draggable-widget] {
   }
   &.socks {
     background:red;
-    width:2 * $width + $margin*2;
+    width:66.6666%;
   }
   &.pops {
     background:darkseagreen;
