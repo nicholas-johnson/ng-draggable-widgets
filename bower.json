@@ -11,6 +11,7 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "latest"
+    "angular": "latest",
+    "angular-mocks": "latest"
   }
 }

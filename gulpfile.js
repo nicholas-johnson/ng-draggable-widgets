@@ -8,6 +8,7 @@ var gulp = require('gulp'),
   ngAnnotate = require('gulp-ng-annotate'),
   beep = require('beepbeep'),
   header = require('gulp-header'),
+  wrap = require("gulp-wrap"),
   sass = require('gulp-sass'),
   jade = require('gulp-jade'),
   minifycss = require('gulp-minify-css'),
@@ -24,6 +25,10 @@ var dirs = {
   demo: {
     src: './source/demo',
     dest: './demo'
+  },
+  test: {
+    src: './source/js',
+    dest: './karma'
   }
 };
 
@@ -34,8 +39,8 @@ var jsHeader = [
 ].join('\n');
 
 gulp.task('js', function () {
-  console.log('src')
   return gulp.src([dirs.js.src, '*.js'].join('/'))
+    .pipe(wrap('(function() {\n<%= contents %>\n})();'))
     .pipe(jshint())
     .pipe(jshint.reporter('default'))
     .on('error', beep)
@@ -50,6 +55,26 @@ gulp.task('js', function () {
     .pipe(header(jsHeader + '\n\n'))
     .pipe(gulp.dest(dirs.js.dest))
     .pipe(livereload());
+});
+
+gulp.task('testJs', function () {
+  return gulp.src([dirs.test.src, '*.js'].join('/'))
+    .pipe(wrap(
+      [
+        '(function() {',
+          '<%= contents %>',
+          '// Smuggle locals out of closure for testing',
+          'window.placeholder = placeholder;',
+          'window.hitZones = hitZones;',
+          'window.widget = widget;',
+        '})();'
+      ].join('\n')
+    ))
+    .pipe(concat(package.name + '.testable.js'))
+    .pipe(ngAnnotate())
+    .on('error', gutil.noop)
+    .pipe(header(jsHeader + '\n\n'))
+    .pipe(gulp.dest(dirs.test.dest));
 });
 
 gulp.task('test', function (done) {
@@ -88,7 +113,7 @@ gulp.task('demo:sass', function() {
 gulp.task('demo', ['demo:jade', 'demo:js', 'demo:sass']);
 
 gulp.task('watch', function() {
-  gulp.watch([dirs.js.src, '**', '*.js'].join('/'), ['js']);
+  gulp.watch([dirs.js.src, '**', '*.js'].join('/'), ['js', 'testJs']);
   gulp.watch([dirs.demo.src, '**', '*'].join('/'), ['demo']);
 });
 

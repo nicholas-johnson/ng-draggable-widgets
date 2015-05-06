@@ -1,3 +1,8 @@
+// Nicholas Johnson (www.nicholasjohnson.com)
+// Forward Advance Training (www.forwardadvance.com)
+// MIT licence
+
+(function() {
 // Hitzones are positioned on the left and right of widgets
 // We call check to see if the current drag location is in a hitzone
 // If so we move the placeholder and update the drag destination.
@@ -114,9 +119,10 @@ var dragController = function($scope) {
     drag.destroyDrag();
   };
 };
+dragController.$inject = ["$scope"];
 
 angular.module('ng-draggable-widgets', [])
-  .directive('dragGroup', function($parse) {
+  .directive('dragGroup', ["$parse", function($parse) {
     return {
       scope:true,
       restrict: 'A',
@@ -127,9 +133,9 @@ angular.module('ng-draggable-widgets', [])
         }
       }
     };
-  })
+  }])
 
-  .directive('draggableWidget', function($rootScope) {
+  .directive('draggableWidget', ["$rootScope", function($rootScope) {
     return {
       scope:true,
       restrict: 'A',
@@ -185,7 +191,7 @@ angular.module('ng-draggable-widgets', [])
         }
       }
     };
-  })
+  }])
 
   .directive('draggableWidgetHandle', function() {
     return {
@@ -203,3 +209,9 @@ angular.module('ng-draggable-widgets', [])
       }
     };
   });
+
+// Smuggle locals out of closure for testing
+window.placeholder = placeholder;
+window.hitZones = hitZones;
+window.widget = widget;
+})();

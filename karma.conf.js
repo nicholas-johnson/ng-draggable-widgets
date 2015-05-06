@@ -15,10 +15,10 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'source/assets/javascripts/lib/*.js',
-      'source/assets/javascripts/js/*.js',
-      'source/assets/javascripts/karma/angular-mocks.js',
-      'source/assets/javascripts/karma/*.js',
+      'public/components/angular/angular.js',
+      'public/components/angular-mocks/angular-mocks.js',
+      'karma/ng-draggable-widgets.testable.js',
+      'karma/*.js'
     ],
 
 

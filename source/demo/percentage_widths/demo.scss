@@ -20,7 +20,6 @@ body {
 div[draggable-widget] {
   width:33.333%;
   height:$height;
-  border-radius:5px;
   padding:10px;
   float:left;
   &.woks {
@@ -41,13 +40,11 @@ div[draggable-widget] {
   }
 }
 div.widget-placeholder {
-  border:1px solid red;
+  background:rgba(0,0,0,0.2);
   float:left;
   height:$height;
-  margin:$margin;
 }
 div[draggable-widget-handle] {
-  border:3px solid rgba(255,255,255,1);
   padding:10px;
   background:rgba(0,0,0,0.3);
   border-radius:3px;
