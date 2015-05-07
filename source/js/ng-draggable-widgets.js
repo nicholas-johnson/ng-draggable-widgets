@@ -159,7 +159,7 @@ angular.module('ng-draggable-widgets', [])
               dest = hitZones.check(e);
               if (dest) {
                 scope.drag.dest = dest;
-                console.log('dest', dest)
+                console.log('dest', dest);
               }
             });
           };
@@ -195,9 +195,9 @@ angular.module('ng-draggable-widgets', [])
         pre: function(scope, el, attrs) {
           el.on('mousedown', function(e) {
             scope.drag.initDrag(e);
-          });
-          el.on('mouseup', function(e) {
-            scope.drag.destroyDrag(e);
+            angular.element(document).one('mouseup', function(e) {
+              scope.drag.destroyDrag(e);
+            });
           });
         }
       }
