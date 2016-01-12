@@ -110,7 +110,7 @@ var placeholder = {
 
 // controller for the drag directive.
 // initialises the drag
-var dragController = function($scope) {
+var dragController = /*@ngInject*/["$scope", function($scope) {
   var drag = $scope.drag = {};
   drag.start = function(e) {
     drag.initDrag(e);
@@ -118,7 +118,7 @@ var dragController = function($scope) {
   drag.end = function() {
     drag.destroyDrag();
   };
-};
+}];
 dragController.$inject = ["$scope"];
 
 angular.module('ng-draggable-widgets', [])

@@ -105,7 +105,7 @@ var placeholder = {
 
 // controller for the drag directive.
 // initialises the drag
-var dragController = function($scope) {
+var dragController = /*@ngInject*/function($scope) {
   var drag = $scope.drag = {};
   drag.start = function(e) {
     drag.initDrag(e);
