@@ -2,6 +2,15 @@
 
 Draggable widgets for Angular. No jQuery dependency.
 
+## Demo
+
+* [Demo index](http://forwardadvance.github.io/ng-draggable-widgets/)
+* [Simple Widget Dragging](http://forwardadvance.github.io/ng-draggable-widgets/demo/simple_dragging/)
+* [Dragging between groups](http://forwardadvance.github.io/ng-draggable-widgets/demo/drag_groups/)
+* [Widths can also be specified as percentages](http://forwardadvance.github.io/ng-draggable-widgets/demo/percentage_widths/)
+* [Dragged widgets can include complex arbitrary HTML](http://forwardadvance.github.io/ng-draggable-widgets/demo/nested_divs/)
+
+
 ## Usage
 
 Each draggable widget gets an attribute of draggable-widget and must contain an element with a draggable-widget-handle attribute.
