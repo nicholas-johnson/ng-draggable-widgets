@@ -4,9 +4,9 @@
 var hitZones = {
   size: 10,
   check: function(e) {
-    var i, groups, widgets, widget, rect;
+    var i, groups, widgets, widget, rect, width;
     groups = document.querySelectorAll('[drag-group]');
-    for (j = 0; j < groups.length; j++) {
+    for (var j = 0; j < groups.length; j++) {
       widgets = groups[j].querySelectorAll('[draggable-widget]:not(.dragging)');
       for (i = 0; i < widgets.length; i++) {
         widget = widgets[i];
@@ -110,7 +110,7 @@ var dragController = function($scope) {
   drag.start = function(e) {
     drag.initDrag(e);
   };
-  drag.end = function(e) {
+  drag.end = function() {
     drag.destroyDrag();
   };
 };
@@ -192,7 +192,7 @@ angular.module('ng-draggable-widgets', [])
       scope:true,
       restrict: 'A',
       link: {
-        pre: function(scope, el, attrs) {
+        pre: function(scope, el) {
           el.on('mousedown', function(e) {
             scope.drag.initDrag(e);
             angular.element(document).one('mouseup', function(e) {
